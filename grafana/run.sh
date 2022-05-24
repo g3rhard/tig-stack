@@ -15,7 +15,7 @@ then
   then
     GRAFANA_PLUGINS=`grafana-cli plugins list-remote | awk '{print $2}'| grep "-"`
   fi
-  for plugin in ${GRAFANA_PLUGINS}; 
+  for plugin in ${GRAFANA_PLUGINS};
   do
     if [ ! -d ${GF_PATHS_PLUGINS}/$plugin ]
     then
@@ -54,9 +54,9 @@ INFLUXDB_DATA_SOURCE_STATUS=`curl -s -L -i \
 
 #Debug Time!
 curl -s -L -i \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- -X GET http://${GRAFANA_USER}:${GRAFANA_PASSWORD}@${GRAFANA_URL}:${GRAFANA_PORT}/api/datasources/name/${INFLUXDB_DATA_SOURCE_WEB} >>$GF_PATHS_LOGS/grafana.log 2>>$GF_PATHS_LOGS/grafana.log 
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -X GET http://${GRAFANA_USER}:${GRAFANA_PASSWORD}@${GRAFANA_URL}:${GRAFANA_PORT}/api/datasources/name/${INFLUXDB_DATA_SOURCE_WEB} >>$GF_PATHS_LOGS/grafana.log 2>>$GF_PATHS_LOGS/grafana.log
 echo "http://${GRAFANA_USER}:${GRAFANA_PASSWORD}@${GRAFANA_URL}:${GRAFANA_PORT}/api/datasources/name/${INFLUXDB_DATA_SOURCE_WEB}" >> $GF_PATHS_LOGS/grafana.log
 echo "INFLUXDB_DATA_SOURCE_STATUS: "$INFLUXDB_DATA_SOURCE_STATUS >> $GF_PATHS_LOGS/grafana.log
 echo "GRAFANA_URL: "$GRAFANA_URL >> $GF_PATHS_LOGS/grafana.log
@@ -67,13 +67,13 @@ echo "GRAFANA_PASSWORD: "$GRAFANA_PASSWORD >> $GF_PATHS_LOGS/grafana.log
 # Check if $INFLUXDB_DATA_SOURCE exists
 if [ ${INFLUXDB_DATA_SOURCE_STATUS} != 200 ]
 then
-  # If not exists, create one 
+  # If not exists, create one
   echo "Data Source: '"${INFLUXDB_DATA_SOURCE}"' not found in Grafana configuration"
   echo "Creating Data Source: '"$INFLUXDB_DATA_SOURCE"'"
   curl -L -i \
-   -H "Accept: application/json" \
-   -H "Content-Type: application/json" \
-   -X POST -d '{
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -X POST -d '{
     "name":"'"${INFLUXDB_DATA_SOURCE}"'",
     "type":"influxdb",
     "url":"http://'"${INFLUXDB_HOST}"':'"${INFLUXDB_PORT}"'",
