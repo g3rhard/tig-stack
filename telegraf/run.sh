@@ -5,7 +5,7 @@ CONFIG_TEMPLATE="/telegraf.conf.template"
 CONFIG_FILE="/etc/telegraf/telegraf.conf"
 
 sed -e "s/\${TELEGRAF_HOST}/$TELEGRAF_HOST/" \
-    -e "s!\${INFLUXDB_HOST}!$INFLUXDB_HOST!" \
+    -e "s|\${INFLUXDB_HOST}|$INFLUXDB_HOST|" \
     -e "s/\${INFLUXDB_PORT}/$INFLUXDB_PORT/" \
     -e "s/\${INFLUXDB_DATABASE}/$INFLUXDB_DATABASE/" \
     $CONFIG_TEMPLATE > $CONFIG_FILE
