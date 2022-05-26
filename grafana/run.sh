@@ -5,8 +5,8 @@
 : "${GF_PATHS_PLUGINS:=/var/lib/grafana/plugins}"
 : "${GF_PATHS_PROVISIONING:=/etc/grafana/provisioning}"
 
-chown -R grafana:grafana "$GF_PATHS_DATA" "$GF_PATHS_LOGS"
-chown -R grafana:grafana /etc/grafana
+chown -R 472:0 "$GF_PATHS_DATA" "$GF_PATHS_LOGS"
+chown -R 472:0 /etc/grafana
 
 # Install all available plugins
 if [ "${GRAFANA_PLUGINS_ENABLED}" != "false" ]
