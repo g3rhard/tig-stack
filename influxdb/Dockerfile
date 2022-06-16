@@ -1,4 +1,4 @@
-FROM influxdb:1.8
+FROM influxdb:latest
 
 LABEL author="Alexis Le Provost <alexis.leprovost@outlook.com>"
 LABEL version="1.0.0"
@@ -12,4 +12,3 @@ ADD run.sh /run.sh
 RUN chmod +x /run.sh
 
 CMD ["/run.sh"]
-

@@ -18,6 +18,6 @@ then
   influx -host=localhost -port=${INFLUXDB_PORT} -execute="CREATE USER ${INFLUXDB_ADMIN_USER} WITH PASSWORD '${INFLUXDB_ADMIN_PASSWORD}' WITH ALL PRIVILEGES"
   influx -host=localhost -port=${INFLUXDB_PORT} -username=${INFLUXDB_ADMIN_USER} -password="${INFLUXDB_ADMIN_PASSWORD}" -execute="create database ${INFLUXDB_DATABASE}"
   influx -host=localhost -port=${INFLUXDB_PORT} -username=${INFLUXDB_ADMIN_USER} -password="${INFLUXDB_ADMIN_PASSWORD}" -execute="grant all PRIVILEGES on ${INFLUXDB_DATABASE} to ${INFLUXDB_ADMIN_USER}"
-fi 
+fi
 
 tail -f /var/log/influxdb/influxdb.log
